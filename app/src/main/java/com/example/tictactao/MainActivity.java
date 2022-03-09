@@ -47,12 +47,13 @@ public class MainActivity extends AppCompatActivity {
 
             img.animate().translationYBy(1000f).setDuration(300);
         }
+        String winnerStr;
         //check if any Player has won
         for(int[] winningPosition: winPositions){
 
             if(gameState[winningPosition[0]]==gameState[winningPosition[1]] && gameState[winningPosition[1]]==gameState[winningPosition[2]] && gameState[winningPosition[2]]!=2){
                 //somebody has won!-
-                String winnerStr;
+
                 if(gameState[winningPosition[0]]==0){
                     winnerStr = "X has won";
                     gameactive=false;
@@ -60,21 +61,25 @@ public class MainActivity extends AppCompatActivity {
                     winnerStr="0 has won";
                     gameactive=false;
                 }
-                for(int i=0;i<gameState.length;i++){
-                    if(gameState[i]!=2){
-                        flag=false;
-                    }else{
-                        flag=true;
-                    }
-                }
-                if(flag==false){
-                    winnerStr="Game is Draft";
-                    gameactive=false;
-                }
+
                 //Update the status bar for winner position
                 TextView status = findViewById(R.id.status);
                 status.setText(winnerStr);
             }
+        }
+        for(int i=0;i<gameState.length;i++){
+            if(gameState[i]==2){
+                flag=true;
+                break;
+            }else{
+                flag=false;
+            }
+        }
+        if(flag==false){
+            winnerStr="Game is Draft";
+            gameactive=false;
+            TextView status = findViewById(R.id.status);
+            status.setText(winnerStr);
         }
    }
 //    for(int i=0;i<gameState.length;i++){
