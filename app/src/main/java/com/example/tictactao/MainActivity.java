@@ -12,6 +12,8 @@ import java.util.logging.XMLFormatter;
 public class MainActivity extends AppCompatActivity {
     boolean gameactive= true;
     boolean flag = true;
+    String winnerStr;
+    boolean gameDrawn=true;
     //Player representation
     // 0 - X
     // 1 -o
@@ -47,55 +49,67 @@ public class MainActivity extends AppCompatActivity {
 
             img.animate().translationYBy(1000f).setDuration(300);
         }
-        String winnerStr;
-        //check if any Player has won
-        for(int[] winningPosition: winPositions){
 
-            if(gameState[winningPosition[0]]==gameState[winningPosition[1]] && gameState[winningPosition[1]]==gameState[winningPosition[2]] && gameState[winningPosition[2]]!=2){
+        //check if any Player has won
+        for(int[] winningPosition: winPositions) {
+
+            if (gameState[winningPosition[0]] == gameState[winningPosition[1]] && gameState[winningPosition[1]] == gameState[winningPosition[2]] && gameState[winningPosition[2]] != 2) {
                 //somebody has won!-
 
-                if(gameState[winningPosition[0]]==0){
+                if (gameState[winningPosition[0]] == 0) {
                     winnerStr = "X has won";
-                    gameactive=false;
-                }else{
-                    winnerStr="0 has won";
-                    gameactive=false;
+                    gameDrawn=false;
+                    gameactive = false;
+                } else{
+                    winnerStr = "0 has won";
+                    gameDrawn=false;
+                    gameactive = false;
                 }
+                    //Update the status bar for winner position
+                    TextView status = findViewById(R.id.status);
+                    status.setText(winnerStr);
 
-                //Update the status bar for winner position
+            }
+        }
+            for (int i = 0; i < gameState.length; i++) {
+                if (gameState[i] == 2) {
+                    flag = true;
+                    break;
+                } else {
+                    flag = false;
+                }
+            }
+            if (!flag && gameDrawn==true) {
+                winnerStr = "Game is Drawn";
+                gameactive = false;
                 TextView status = findViewById(R.id.status);
                 status.setText(winnerStr);
-            }
-        }
-        for(int i=0;i<gameState.length;i++){
-            if(gameState[i]==2){
-                flag=true;
-                break;
-            }else{
-                flag=false;
-            }
-        }
-        if(flag==false){
-            winnerStr="Game is Draft";
-            gameactive=false;
-            TextView status = findViewById(R.id.status);
-            status.setText(winnerStr);
+
         }
    }
-//    for(int i=0;i<gameState.length;i++){
-//        if(gameState[i]!=2){
-//            flag=false;
-//        }else{
-//            flag=true;
-//        }
-//    }
-//                if(flag)
+
 
    public void gameReset(View view){
         gameactive=true;
         activePlayer=0;
         for(int i=0; i<gameState.length; i++){
             gameState[i]=2;
+       }
+       ((ImageView)findViewById(R.id.imageView0)).setImageResource(0);
+       ((ImageView)findViewById(R.id.imageView1)).setImageResource(0);
+       ((ImageView)findViewById(R.id.imageView2)).setImageResource(0);
+       ((ImageView)findViewById(R.id.imageView3)).setImageResource(0);
+       ((ImageView)findViewById(R.id.imageView4)).setImageResource(0);
+       ((ImageView)findViewById(R.id.imageView5)).setImageResource(0);
+       ((ImageView)findViewById(R.id.imageView6)).setImageResource(0);
+       ((ImageView)findViewById(R.id.imageView7)).setImageResource(0);
+       ((ImageView)findViewById(R.id.imageView8)).setImageResource(0);
+   }
+   public void Restart(View view){
+       gameactive=true;
+       activePlayer=0;
+       for(int i=0; i<gameState.length; i++){
+           gameState[i]=2;
        }
        ((ImageView)findViewById(R.id.imageView0)).setImageResource(0);
        ((ImageView)findViewById(R.id.imageView1)).setImageResource(0);
