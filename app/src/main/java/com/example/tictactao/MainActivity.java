@@ -58,11 +58,11 @@ public class MainActivity extends AppCompatActivity {
 
                 if (gameState[winningPosition[0]] == 0) {
                     winnerStr = "X has won";
-                    gameDrawn=false;
+                   gameDrawn=false;
                     gameactive = false;
                 } else{
                     winnerStr = "0 has won";
-                    gameDrawn=false;
+                   gameDrawn=false;
                     gameactive = false;
                 }
                     //Update the status bar for winner position
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                     flag = false;
                 }
             }
-            if (!flag && gameDrawn==true) {
+            if (!flag && gameDrawn ) {
                 winnerStr = "Game is Drawn";
                 gameactive = false;
                 TextView status = findViewById(R.id.status);
@@ -91,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
    public void gameReset(View view){
         gameactive=true;
+        gameDrawn=true;
         activePlayer=0;
         for(int i=0; i<gameState.length; i++){
             gameState[i]=2;
@@ -107,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
    }
    public void Restart(View view){
        gameactive=true;
+       gameDrawn=true;
        activePlayer=0;
        for(int i=0; i<gameState.length; i++){
            gameState[i]=2;
