@@ -96,6 +96,8 @@ public class MainActivity extends AppCompatActivity {
         for(int i=0; i<gameState.length; i++){
             gameState[i]=2;
        }
+       TextView status = findViewById(R.id.status);
+       status.setText("X's Turn - Tap to play");
        ((ImageView)findViewById(R.id.imageView0)).setImageResource(0);
        ((ImageView)findViewById(R.id.imageView1)).setImageResource(0);
        ((ImageView)findViewById(R.id.imageView2)).setImageResource(0);
@@ -113,6 +115,8 @@ public class MainActivity extends AppCompatActivity {
        for(int i=0; i<gameState.length; i++){
            gameState[i]=2;
        }
+       TextView status = findViewById(R.id.status);
+       status.setText("X's Turn - Tap to play");
        ((ImageView)findViewById(R.id.imageView0)).setImageResource(0);
        ((ImageView)findViewById(R.id.imageView1)).setImageResource(0);
        ((ImageView)findViewById(R.id.imageView2)).setImageResource(0);

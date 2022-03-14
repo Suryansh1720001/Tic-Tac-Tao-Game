@@ -251,6 +251,7 @@
         android:linksClickable="false"
         android:onClick="@string/Restart"
         android:text=" Restart Game"
+        android:textColor="#5E35B1"
         app:backgroundTint="@color/teal_200"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
